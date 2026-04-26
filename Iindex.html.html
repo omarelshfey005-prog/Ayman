@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>بطاقة اتصال - أ/ ايمن الحرباوي</title>
+    <!-- مكتبة إنشاء الباركود (QR Code) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #cc0000;  /* خلفية حمراء قوية */
+            font-family: 'Tahoma', 'Segoe UI', 'Cairo', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 48px;
+            max-width: 550px;
+            width: 100%;
+            padding: 30px 25px 40px 25px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #b10101;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .sub {
+            font-size: 1rem;
+            color: #5a2e2e;
+            border-bottom: 2px solid #ffd966;
+            display: inline-block;
+            padding-bottom: 6px;
+            margin-bottom: 25px;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 32px;
+            display: inline-block;
+            margin: 15px 0 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+        }
+
+        #qrcode img, #qrcode svg {
+            width: 220px !important;
+            height: 220px !important;
+            border-radius: 20px;
+        }
+
+        .info-text {
+            background-color: #fff0e0;
+            padding: 12px 15px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #a10000;
+            margin: 20px 0 18px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 160px;
+            padding: 16px 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: inherit;
+            background-color: #eaeaea;
+            color: #333;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-call {
+            background-color: #28a745;
+            color: white;
+            border-bottom: 4px solid #1e7e34;
+        }
+
+        .btn-call:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+            border-bottom: 4px solid #128C7E;
+        }
+
+        .btn-wa:hover {
+            background-color: #20b859;
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            margin-top: 35px;
+            font-size: 0.75rem;
+            color: #7a4d4d;
+            border-top: 1px solid #f0c0c0;
+            padding-top: 18px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 18px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .btn {
+                padding: 12px 8px;
+                font-size: 1rem;
+            }
+            #qrcode img, #qrcode svg {
+                width: 170px !important;
+                height: 170px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>أ/ ايمن الحرباوي</h1>
+    <div class="sub">📞 متاح للاتصال أو واتساب</div>
+
+    <!-- مكان عرض الباركود -->
+    <div class="qr-container">
+        <div id="qrcode"></div>
+    </div>
+
+    <div class="info-text">
+        🔲 امسح الباركود (QR) بالكاميرا ← يفتح هذه الصفحة ← اختر الاتصال أو الواتساب
+    </div>
+
+    <div class="button-group">
+        <a href="tel:01029198493" class="btn btn-call">
+            <span class="btn-icon">📞</span> اتصل الآن
+        </a>
+        <a href="https://wa.me/201029198493" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+            <span class="btn-icon">💬</span> واتساب
+        </a>
+    </div>
+    <footer>
+        الرقم: 0102 9198493 • يبدأ الاتصال أو المحادثة فور الضغط
+    </footer>
+</div>
+
+<script>
+    // الباركود سيتم إنشاؤه مباشرة لرابط هذه الصفحة (حتى لو تم رفعها على أي سيرفر)
+    // بهذه الطريقة عندما يمسح المستخدم الباركود، سيفتح نفس الصفحة التي تحتوي أزرار الاتصال والواتساب.
+    let currentURL = window.location.href;
+    // إذا كانت الصفحة محلياً (file://) ننبه المستخدم بأن يرفعها على أي سيرفر مجاني، وإلا سنعطيه باركود احتياطي لرابط صفحة افتراضية.
+    if (currentURL.startsWith("file://")) {
+        // في حالة فتح الملف محلياً لا يمكن للغير مسحه ضوئياً، نعرض رسالة ونعطي باركود ثابت يحتوي رابط واتساب + رقم؟
+        // الحل الأفضل: نعرض باركود بديل يحتوي على رقم الهاتف بنظام vCard أو رابط WA لكن الأفضل توجيه المستخدم لتحميل الصفحة على GitHub Pages.
+        let warningMsg = document.createElement("div");
+        warningMsg.style.backgroundColor = "#ffcccc";
+        warningMsg.style.padding = "12px";
+        warningMsg.style.borderRadius = "28px";
+        warningMsg.style.marginTop = "15px";
+        warningMsg.style.fontSize = "0.85rem";
+        warningMsg.style.color = "#990000";
+        warningMsg.innerHTML = "⚠️ تنبيه: الملف يعمل محلياً. لكي يعمل الباركود عالمياً، يرجى رفع الصفحة على أي استضافة مجانية (مثل GitHub Pages) أو استخدام تطبيق QR ثابت يتضمن الرابط التالي:<br><strong style='direction:ltr;word-break:break-all;'>https://wa.me/201029198493?text=مرحباً</strong><br>وسيظهر باركود واتساب مباشر أدناه كحل بديل.";
+        document.querySelector(".qr-container").after(warningMsg);
+        // إنشاء باركود بديل لرقم واتساب
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://wa.me/201029198493?text=السلام عليكم، أرغب بالتواصل",
+            width: 220,
+            height: 220,
+            colorDark: "#b00000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    } else {
+        // الوضع الطبيعي: الصفحة منشورة على رابط عام -> الباركود يشير إلى نفس الرابط
+        new QRCode(document.getElementById("qrcode"), {
+            text: currentURL,
+            width: 220,
+            height: 220,
+            colorDark: "#b00000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+        // إضافة سطر توضيحي صغير
+        let note = document.createElement("div");
+        note.style.marginTop = "10px";
+        note.style.fontSize = "0.7rem";
+        note.style.color = "#a14343";
+        note.innerText = "✅ هذا الباركود يقود مباشرة لهذه البطاقة";
+        document.querySelector(".qr-container").appendChild(note);
+    }
+</script>
+
+<!-- في حال الرغبة بتعديل الباركود ليحتوي على رابط مباشر للموقع، يمكن ببساطة رفع الصفحة على أي hosting
+     ثم مسح الباركود سيأخذ المستخدم إلى هذه الصفحة الحمراء -->
+</body>
+</html>
